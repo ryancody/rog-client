@@ -1,16 +1,18 @@
 .game-grid {
-    width: 160px;
-    height: 160px;
-    background: #aeaeae;
-    margin: 20px auto;
+    width: 272px;
+    height: 272px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(16, 16px);
     grid-template-rows: repeat(16, 16px);
+    grid-gap: 1px;
 }
 
 .game-grid .unit {
     background: white;
     display: grid;
     box-sizing: border-box;
-    border: 1px solid;
+    /*border-right: 1px solid #aeaeae;
+    border-bottom: 1px solid #aeaeae;*/
+    box-shadow: 1px 1px 8px 0px #aeaeae;
 }
