@@ -1,0 +1,16 @@
+.game-grid {
+    width: 160px;
+    height: 160px;
+    background: #aeaeae;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(16, 16px);
+    grid-template-rows: repeat(16, 16px);
+}
+
+.game-grid .unit {
+    background: white;
+    display: grid;
+    box-sizing: border-box;
+    border: 1px solid;
+}
