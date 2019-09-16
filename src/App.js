@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Game from './components/Game'
 const conn = require('./components/conn')
-require('./bulma.css')
+require('./style/bulma.css')
 
 class App extends Component {
 

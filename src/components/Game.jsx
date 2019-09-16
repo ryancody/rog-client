@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-require('../grid-style.css')
+require('../style/grid-style.css')
 
 class Game extends Component {
 
@@ -14,7 +14,7 @@ class Game extends Component {
     render() {
 
         let arr = []
-        for(let i = 0; i < 256; i++) {
+        for(let i = 0; i < 576; i++) {
             arr.push(i)
         }
         let squares = arr.map( (i) => {

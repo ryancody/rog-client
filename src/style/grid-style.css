@@ -1,10 +1,10 @@
 .game-grid {
-    width: 272px;
-    height: 272px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(16, 16px);
-    grid-template-rows: repeat(16, 16px);
+    width: 384px;
+    height: 384px;
+    grid-template-columns: repeat(24, 16px);
+    grid-template-rows: repeat(24, 16px);
     grid-gap: 1px;
 }
 
