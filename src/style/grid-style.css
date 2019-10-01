@@ -1,11 +1,11 @@
 .game-grid {
     margin: auto;
     display: grid;
-    width: 384px;
-    height: 384px;
-    grid-template-columns: repeat(24, 16px);
-    grid-template-rows: repeat(24, 16px);
-    grid-gap: 1px;
+    width: 576px;
+    height: 576px;
+    grid-template-columns: repeat(24, 32px);
+    grid-template-rows: repeat(24, 32px);
+    grid-gap: 0px;
 }
 
 .game-grid .unit {
@@ -15,4 +15,17 @@
     /*border-right: 1px solid #aeaeae;
     border-bottom: 1px solid #aeaeae;*/
     box-shadow: 1px 1px 8px 0px #aeaeae;
+}
+
+.game-grid .unit:hover {
+    border: 1px solid blue;
+}
+
+.game-boundary {
+    display: inline-block;
+}
+
+.player {
+    font-size: 2em;
+    position: relative;
 }
