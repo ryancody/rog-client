@@ -15,6 +15,10 @@ exports.process = (message) => {
             ee.emit('SUBMIT_USER_INFO')
             break
 
+        case 'ADD_TO_GAME':
+            ee.emit('JOIN_GAME')
+            break
+
         default:
             console.log('from server:', message)
             break

@@ -11,16 +11,20 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    let rand = id.randomHash()
+    let newId = id.getId()
 
     this.state = {
       currentGame: null,
-      id: rand,
-      name: 'Player ' + rand
+      id: newId,
+      name: 'Player ' + newId,
+      joinId: ''
     }
 
+    // when server requests user info, SUBMIT_USER_INFO will be fired
     ee.on('SUBMIT_USER_INFO', () => {
-      conn.send({type: 'UPDATE_USER_INFO', from: id.getId(), data: {id: this.state.id, name: this.state.name}})
+
+      // tell server your latest user info
+      conn.send({type: 'UPDATE_USER_INFO', from: this.state.id, data: {id: this.state.id, name: this.state.name}})
     })
   }
 
@@ -32,6 +36,11 @@ class App extends Component {
   handleIdChange = () => {
     let newId = document.getElementById('idInput').value
     this.setState({id: newId})
+  }
+
+  handleUserInfoBlur = () => {
+
+    ee.emit('SUBMIT_USER_INFO')
   }
 
   handleNewGame = () => {
@@ -50,6 +59,16 @@ class App extends Component {
     conn.send({type: 'PRINT_USERS', from: this.state.id})
   }
 
+  handleJoinGame = () => {
+    conn.send({type: 'JOIN_GAME', from: this.state.id, data: {joinId: this.state.joinId}})
+  }
+
+  handleJoinIdChange = () => {
+    this.setState({
+      joinId: document.getElementById('joinId').value
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -58,8 +77,8 @@ class App extends Component {
             <div className='container'>
               <ConnectionState />
               <div className=''>
-                Name: <input id='nameInput' className='input' onChange={this.handleNameChange} value={this.state.name}></input>
-                ID: <input id='idInput' className='input' onChange={this.handleIdChange} value={this.state.id}></input>
+                Name: <input id='nameInput' className='input' onChange={this.handleNameChange} onBlur={this.handleUserInfoBlur} value={this.state.name}></input>
+                ID: <input id='idInput' className='input' onChange={this.handleIdChange} onBlur={this.handleUserInfoBlur} value={this.state.id}></input>
               </div>
             </div>
           </div>
@@ -70,6 +89,13 @@ class App extends Component {
             <div className='field is-grouped'>
               <div className='control'>
                 <button className='button' onClick={this.handleNewGame}>new game</button>
+              </div>
+            </div>
+
+            <div className='field is-grouped'>
+              <div className='control'>
+                <input id='joinId' className='input' value={this.state.joinId} onChange={this.handleJoinIdChange}></input>
+                <button className='button' onClick={this.handleJoinGame}>join game</button>
               </div>
             </div>
             
